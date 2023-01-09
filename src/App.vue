@@ -3,8 +3,21 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+
+    }
+  },
+  created() {
+    console.log(this.$store.state.user);
+  }
+}
+</script>
 
 <style>
 #app {

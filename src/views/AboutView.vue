@@ -1,14 +1,24 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    {{ $store.state.user.name }} {{ $store.state.user.email }}
+    <AboutForm/>
   </div>
 </template>
 
 <script>
+import AboutForm from '@/components/AboutForm.vue';
+
 export default {
-  created() {
-    
-  }
+  name: 'AboutView',
+  components: { AboutForm }
 }
 </script>
+
+<style scoped>
+.about{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+</style>

@@ -8,11 +8,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-
-    }
-  },
   created() {
     console.log(this.$store.state.user);
   }
@@ -20,8 +15,10 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Jost', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

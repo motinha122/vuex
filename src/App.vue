@@ -18,7 +18,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
 #app {
-  font-family:'Jost', Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Jost','Segoe UI', Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1 v-if="isLogged == false">Login on about page</h1>
-    {{ $store.state.user.name }} {{ $store.state.user.email }}
+    <h1 v-if="isLogged == true">You are logged as<br>
+    {{ $store.state.user.name }} {{ $store.state.user.email }}</h1>
   </div>
 </template>
 

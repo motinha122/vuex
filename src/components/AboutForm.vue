@@ -7,6 +7,7 @@
         <br>
         <button @click="login">Update Profile</button>
     </div>
+    <h2 v-if="isLogged == true" class="is_logged">Logged Successfully!</h2>
 </template>
 
 <script>
@@ -26,6 +27,12 @@ export default {
             this.$store.commit('storeUser', newUser);
             this.$store.commit('logUser');
             console.log('Updated Successfully');
+        }
+    },
+    computed: {
+        isLogged() {
+            console.log(this.$store.state.isLogged);
+            return this.$store.state.isLogged;
         }
     },
 }

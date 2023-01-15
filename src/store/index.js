@@ -9,6 +9,7 @@ export default createStore({
       { id: 2, name: "Luva", price: 200 },
       { id: 3, name: "Meia", price: 400 },
     ],
+    cart:[],
   },
   getters: {},
   mutations: {
@@ -18,6 +19,13 @@ export default createStore({
     logUser(state) {
       state.isLogged = true;
     },
+    addProductCart(state,data) {
+      state.cart.push(data);
+    },
+    removeProduct(state, id) {
+      const idx = state.cart.findIndex(obj => obj.id === id);
+      state.cart.splice(idx, 1);
+    }
   },
   actions: {},
   modules: {},

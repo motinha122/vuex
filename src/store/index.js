@@ -5,13 +5,20 @@ export default createStore({
     user: { name: "", email: "" },
     isLogged: false,
     products: [
-      { id: 1, name: "Bola", price: 100 },
-      { id: 2, name: "Luva", price: 200 },
-      { id: 3, name: "Meia", price: 400 },
+      { id: 1, name: "Bola", price: 100, quantity: 0 },
+      { id: 2, name: "Luva", price: 200, quantity: 0 },
+      { id: 3, name: "Meia", price: 400, quantity: 0 },
     ],
-    cart:[],
+    cart: [],
   },
-  getters: {},
+  getters: {
+    cartTotal(state) {
+      return state.cart.reduce(
+        (total, item) => (total += item.price * item.quantity),
+        0
+      );
+    },
+  },
   mutations: {
     storeUser(state, data) {
       state.user = data;
@@ -19,13 +26,31 @@ export default createStore({
     logUser(state) {
       state.isLogged = true;
     },
-    addProductCart(state,data) {
-      state.cart.push(data);
+    searchProduct(state, product) {
+      const hasItem = state.cart.some((item) => item.id === product.id);
+      console.log(hasItem);
+      return hasItem;
     },
-    removeProduct(state, id) {
-      const idx = state.cart.findIndex(obj => obj.id === id);
-      state.cart.splice(idx, 1);
-    }
+    addProductCart(state, product) {
+      const newProduct = { isOnCart: true, ...product };
+      state.cart.push(newProduct);
+    },
+    removeProduct(state, product) {
+      const index = state.cart.findIndex((obj) => obj.id === product.id);
+      state.cart.splice(index, 1);
+    },
+    addQuantity(state, product) {
+      const index = state.cart.findIndex((obj) => obj.id === product.id);
+      state.cart[index].quantity += 1;
+    },
+    removeQuantity(state, product) {
+      const index = state.cart.findIndex((obj) => obj.id === product.id);
+      if (state.cart[index].quantity > 0) {
+        state.cart[index].quantity -= 1;
+      } else {
+        state.cart.splice(index, 1);
+      }
+    },
   },
   actions: {},
   modules: {},

@@ -1,10 +1,9 @@
 <template>
   <div class="hello">
-    <h1 v-if="isLogged == false">Login on about page</h1>
-    <h1 v-if="isLogged == true">You are logged as<br>
+    <h1 v-if="!isLogged">Login on about page</h1>
+    <h1 v-if="isLogged">You are logged as<br>
     {{ $store.state.user.name }} {{ $store.state.user.email }}</h1>
     <ProductsApp/>
-    
   </div>
 </template>
 
@@ -15,7 +14,6 @@ export default {
     name: "HelloWorld",
     computed: {
         isLogged() {
-            console.log(this.$store.state.isLogged);
             return this.$store.state.isLogged;
         }
     },

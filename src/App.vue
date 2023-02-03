@@ -8,14 +8,16 @@
 
 <script>
 export default {
-  created() {
-    console.log(this.$store.state.user);
-  }
+
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+button{
+  font-family: 'Jost','Segoe UI';
+}
 
 #app {
   font-family:'Jost','Segoe UI', Avenir, Helvetica, Arial, sans-serif;

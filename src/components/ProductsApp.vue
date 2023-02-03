@@ -5,10 +5,10 @@
         v-for="product in $store.state.products"
         :key="product.id"
         :product="product"/>
-
     </div>
+
+    <h1>Cart</h1>
     <section class="cart">
-        <h1>Cart</h1>
         <SingleProductApp
         v-for="product in $store.state.cart"
         :key="product.id"
@@ -33,5 +33,11 @@ div{
     align-items: center;
 }
 
+.cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
 </style>

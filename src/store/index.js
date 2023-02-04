@@ -26,14 +26,18 @@ export default createStore({
     logUser(state) {
       state.isLogged = true;
     },
-    searchProduct(state, product) {
+    addProductCart(state, product) {
       const hasItem = state.cart.some((item) => item.id === product.id);
       console.log(hasItem);
-      return hasItem;
-    },
-    addProductCart(state, product) {
-      const newProduct = { isOnCart: true, ...product };
-      state.cart.push(newProduct);
+      if (hasItem == true) {
+        const index = state.cart.findIndex((obj) => obj.id === product.id);
+        state.cart[index].quantity += 1;
+      } else {
+        const newProduct = { isOnCart: true, ...product };
+        state.cart.push(newProduct);
+        const index = state.cart.findIndex((obj) => obj.id === product.id);
+        state.cart[index].quantity += 1;
+      }
     },
     removeProduct(state, product) {
       const index = state.cart.findIndex((obj) => obj.id === product.id);
@@ -45,7 +49,7 @@ export default createStore({
     },
     removeQuantity(state, product) {
       const index = state.cart.findIndex((obj) => obj.id === product.id);
-      if (state.cart[index].quantity > 0) {
+      if (state.cart[index].quantity != 0 && state.cart[index].quantity != 1) {
         state.cart[index].quantity -= 1;
       } else {
         state.cart.splice(index, 1);

@@ -18,7 +18,6 @@ export default {
     },
     methods: {
         addToCart() {
-            this.$store.commit('searchProduct', this.product);
             this.$store.commit('addProductCart', this.product);
         },
         removeFromCart() {

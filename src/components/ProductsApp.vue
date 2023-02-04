@@ -45,4 +45,8 @@ div{
     flex-wrap: wrap;
 }
 
+.cart * {
+    width: 8rem;
+}
+
 </style>

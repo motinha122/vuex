@@ -7,7 +7,7 @@
         :product="product"/>
     </div>
 
-    <h1>Cart</h1>
+    <h1>Cart - Total {{ cartTotal }}</h1>
     <section class="cart">
         <SingleProductApp
         v-for="product in $store.state.cart"
@@ -21,6 +21,11 @@
 import SingleProductApp from './SingleProductApp.vue';
 
 export default {
+    computed: {
+        cartTotal() {
+            return this.$store.getters.cartTotal
+        }
+    },
     components: { SingleProductApp }
 }
 </script>
